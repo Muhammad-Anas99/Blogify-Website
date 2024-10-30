@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const userRoute = require('./routes/user.js')
+
 const blogRoute = require('./routes/blog.js')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
