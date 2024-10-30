@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <title>Home Page</title>
+  </head>
+  <body>
+    <%- include("./partials/nav")%>
+    <% if(locals.user){ %>
+      <div class="container d-flex align-items-center justify-content-center w-95 flex-wrap p-3 gap-4 mt-3">
+          <% blogs.forEach(blog => { %>
+            <div class="col" style="margin-left: 20px;">
+              <div class="card col rounded-4" style="width: 18rem;height: auto-fit;">
+                <img src="<%= blog.coverImageURL%>" style="height: 200px;" class="card-img-top border-secondary img-thumbnail border-bottom border-2 rounded-4 card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title border-secondary border-bottom border-1"><%= blog.title %></h5>
+                  <div class="container d-flex justify-content-between">
+                    <a href="/blog/<%= blog._id %>" class="btn btn-primary w-50">View</a>
+                    <a href="/blog/delete/<%= blog._id %>" class="text-danger text-decoration-none fs-4" role="button"><i class="ri-delete-bin-line"></i></a>
+                  </div>
+                </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+   <% }else{ %>
+    <div class="alert alert-danger" role="alert">
+      Please Create an accout to create blogs
+    </div>
+  <% } %>
+
+
+    <%- include("./partials/scripts") %>
+  </body>
+</html>

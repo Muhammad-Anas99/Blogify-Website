@@ -1,0 +1,54 @@
+<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid align-center">
+      <a class="fs-3 navbar-brand" href="/">Blogify</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <% if (locals.user) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/add-new">Add Blog</a>
+            </li> 
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Anas Khalid
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item text-primary" href="#">Language</a></li>
+                <li><a class="dropdown-item text-warning" href="#">Settings</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="/user/logout">Logout</a></li>
+              </ul>
+          </li>
+        </ul>
+        <% }else{ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/signup">Create Account</a>
+          </li>             <li class="nav-item">
+            <a class="nav-link" href="/user/signin">Signin</a>
+          </li> 
+        <% } %>
+      <form class="d-flex gap-2" role="search">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      <% if(locals.user){ %>
+       <a class="btn btn-outline-danger" href="/user/logout" role="button">Logout</a>
+     <% } %>
+    </form>
+  </div>
+
+    </div>
+  </nav>
+
+
+<% if(locals.error){ %>
+  <div class="container mt-4 container-lg">
+  <div class="alert alert-danger" role="alert">
+<%= locals.error%>
+  </div>
+</div>
+<% } %>
